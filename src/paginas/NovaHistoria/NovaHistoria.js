@@ -4,27 +4,28 @@ import { Topbar } from "../../componentes/sidebar/topbar/topbar";
 import style from "./NovaHistoria.module.css";
 import { useNavigate } from "react-router-dom";
 import HistoriaAPI from "../../services/historiaAPI";
+import ProjetoAPI from "../../services/projetoAPI";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export function NovaHistoria() {
     const[nome, setNome] = useState('');
-    const[historia, setHistoria] = useState([]);
-    const[historiaSelecionada, setHistoriaSelecionada] = useState('');
+    const[listaProjetos, setListaProjetos] = useState([]);
+    const[projetoSelecionado, setProjetoSelecionado] = useState('');
     const[descricao, setDescricao] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchTipoHistoria = async () => {
+        const buscarProjetos = async () => {
             try {
-                const tipos = await HistoriaAPI.listarTiposHistoriasAsync();
-                setHistoria(tipos)
+                const projetos = await ProjetoAPI.listarAsync();
+                setListaProjetos(projetos);
             } catch (error) {
-                console.error("Erro ao buscar tipos de histórias: ", error);
+                console.error("Erro ao buscar projetos: ", error);
             }
         };
 
-        fetchTipoHistoria();
+        buscarProjetos();
     }, []);
 
     const handleSubmit = async (e) => {
@@ -36,7 +37,7 @@ export function NovaHistoria() {
         }
 
         try {
-            await HistoriaAPI.criarHistoriaAsync(nome, historiaSelecionada, descricao
+            await HistoriaAPI.criarHistoriaAsync(nome, projetoSelecionado, descricao
             );
 
             alert("História cadastrada com sucesso!");
@@ -52,7 +53,7 @@ export function NovaHistoria() {
     }
 
     const isFormValid = () => {
-        return nome && historiaSelecionada && descricao;
+        return nome && projetoSelecionado && descricao;
     };
 
     return (
@@ -74,23 +75,23 @@ export function NovaHistoria() {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formHistoria"
+                        <Form.Group controlId="formProjeto"
                         className="mb-3">
-                            <Form.Label>História</Form.Label>
+                            <Form.Label>Projeto</Form.Label>
                             <Form.Select
-                                name="historia"
-                                value={historiaSelecionada}
-                                onChange={(e) => setHistoriaSelecionada(e.target.value)}
+                                name="projeto"
+                                value={projetoSelecionado}
+                                onChange={(e) => setProjetoSelecionado(e.target.value)}
                                 required
                             >
                                 <option value="">
                                     Selecione....
                                 </option>
 
-                                {historia.map((historia) => (
-                                    <option key={historia.id}
-                                    value={historia.id}>
-                                        {historia.nome}
+                                {listaProjetos.map((projeto) => (
+                                    <option key={projeto.id}
+                                    value={projeto.id}>
+                                        {projeto.nome}
                                     </option>
                                 ))}
                                 </Form.Select>

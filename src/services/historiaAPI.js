@@ -3,7 +3,7 @@ import { HTTPClient } from "./client";
 const HistoriaAPI = {
     async obterAsync(historiaId) {
         try {
-            const response = await HTTPClient.get(`api/Historias/Obter/${historiaId}`)
+            const response = await HTTPClient.get(`/api/Historias/Obter/${historiaId}`)
             return response.data;
         } catch (error) {
             console.error("Erro ao obter história: ", error);
@@ -13,7 +13,7 @@ const HistoriaAPI = {
 
     async listarHistoriasAsync(ativos) {
         try {
-            const response = await HTTPClient.get(`api/Historias/Listar?ativos=${ativos}`)
+            const response = await HTTPClient.get(`/api/Historias/Listar?ativos=${ativos}`)
             return response.data;
         } catch (error) {
             console.error("Erro ao listar histórias: ", error);
@@ -28,7 +28,7 @@ const HistoriaAPI = {
                 projetoId: projetoId,
                 descricao: descricao,
             };
-            const response = await HTTPClient.post(`api/Historias/Criar`, historiaCriar)
+            const response = await HTTPClient.post(`/api/Historias/Criar`, historiaCriar)
             return response.data;
         } catch (error) {
             console.error("Erro ao criar história: ", error);
@@ -44,7 +44,7 @@ const HistoriaAPI = {
                 projetoId: projetoId,
                 descricao: descricao,
             };
-            const response = await HTTPClient.put(`api/Historias/Editar`, historiaEditar)
+            const response = await HTTPClient.put(`/api/Historias/Editar`, historiaEditar)
             return response.data
         } catch (error) {
             console.error("Erro ao editar história: ", error);
@@ -54,23 +54,13 @@ const HistoriaAPI = {
 
     async deletarHistoriaAsync(historiaId){
         try {
-            const response = await HTTPClient.delete(`api/Historias/Deletar/${historiaId}`)
+            const response = await HTTPClient.delete(`/api/Historias/Deletar/${historiaId}`)
             return response.data
         } catch (error) {
             console.error("Erro ao deletar história: ", error);
             throw error;
         }
     },
-
-    async listarTiposHistoriasAsync(){
-        try {
-            const response = await HTTPClient.get(`/api/Historias/ListarTiposHistoria`);
-            return response.data;
-        } catch (error) {
-            console.error("Erro ao listar tipos de história: ", error);
-            throw error;
-        }
-    }
 }
 
 export default HistoriaAPI;

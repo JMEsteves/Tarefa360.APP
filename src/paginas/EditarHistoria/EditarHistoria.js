@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import HistoriaAPI from "../../services/historiaAPI";
 import style from "./EditarHistoria.module.css";
 import ProjetoAPI from "../../services/projetoAPI"
-import { FormGroup } from "react-bootstrap";
 
 export function EditarHistoria(){
 
@@ -66,7 +65,7 @@ export function EditarHistoria(){
 
     return (
         <Sidebar>
-            <Topar>
+            <Topbar>
                 <div className={style.pagina_conteudo}>
 
                     <h3>Editar História</h3>
@@ -101,10 +100,10 @@ export function EditarHistoria(){
                                         Selecione...
                                     </option>
 
-                                    {projetos.map((tipo) => (
-                                        <option key={tipo.id} value={tipo.id}
+                                    {listaProjetos.map((projeto) => (
+                                        <option key={projeto.id} value={projeto.id}
                                         >
-                                            {tipo.descricao}
+                                            {projeto.nome}
                                         </option>
                                     ))}
 
@@ -112,10 +111,29 @@ export function EditarHistoria(){
 
                         </Form.Group>
 
+                        <Form.Group
+                            controlId="formDescricao"
+                            className="mb-3">
+                                <Form.Label>Descrição</Form.Label>
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3}
+                                    placeholder="Digite a descrição da história"
+                                    name="descricao"
+                                    value={descricao}
+                                    onChange={(e) => setDescricao(e.target.value)}
+                                    required
+                                />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">
+                            Atualizar
+                        </Button>
+
                     </Form>
 
                 </div>
-            </Topar>
+            </Topbar>
         </Sidebar>
     )
 

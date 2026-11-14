@@ -73,7 +73,7 @@ export function Historias() {
                 {historias.map((historia) => (
                   <tr key={historia.id}>
                     <td>{historia.nome}</td>
-                    <td>{historia.projeto}</td>
+                    <td>{historia.projetoNome}</td>
                     <td>
                       <Link
                         to="/historia/editar"
@@ -95,12 +95,12 @@ export function Historias() {
             </Table>
           </div>
 
-          <Modal show={mostrarModal} onHide={handleFecharModal}>
+          <Modal show={mostrarModal} onHide={handleFecharModal} centered>
             <Modal.Header closeButton>
               <Modal.Title>Confirmar</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              Tem certeza que deseja deletar a história?{" "}
+              Tem certeza que deseja deletar a história{" "}
               {historiaSelecionado?.nome}?
             </Modal.Body>
             <Modal.Footer>
