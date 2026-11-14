@@ -21,11 +21,11 @@ const HistoriaAPI = {
         }
     },
 
-    async criarHistoriaAsync(nome, historias, descricao){
+    async criarHistoriaAsync(nome, projetoId, descricao){
         try {
             const historiaCriar = {
                 nome: nome,
-                historias: historias,
+                projetoId: projetoId,
                 descricao: descricao,
             };
             const response = await HTTPClient.post(`api/Historias/Criar`, historiaCriar)
@@ -36,12 +36,12 @@ const HistoriaAPI = {
         }
     },
 
-    async editarHistoriaAsync(id, nome, historias, descricao){
+    async editarHistoriaAsync(id, nome, projetoId, descricao){
         try {
             const historiaEditar = {
                 id: id,
                 nome: nome,
-                historias: historias,
+                projetoId: projetoId,
                 descricao: descricao,
             };
             const response = await HTTPClient.put(`api/Historias/Editar`, historiaEditar)

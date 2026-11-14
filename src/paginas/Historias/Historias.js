@@ -77,7 +77,7 @@ export function Historias() {
                     <td>
                       <Link
                         to="/historia/editar"
-                        state={historia.id}
+                        state={historia}
                         className={style.botao_editar}
                       >
                         <MdEdit />
