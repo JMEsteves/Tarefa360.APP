@@ -38,7 +38,7 @@ export function Historias() {
 
   async function carregarHistorias() {
     try {
-      const listaHistorias = await HistoriaAPI.listarHistoriasAsync(true);
+      const listaHistorias = await HistoriaAPI.listarHistoriasAsync();
       setHistorias(listaHistorias);
     } catch (error) {
       console.error("Erro ao carregar histórias: ", error);

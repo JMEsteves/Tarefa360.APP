@@ -3,7 +3,7 @@ import { HTTPClient } from "./client";
 const HistoriaAPI = {
     async obterAsync(historiaId) {
         try {
-            const response = await HTTPClient.get(`/api/Historias/Obter/${historiaId}`)
+            const response = await HTTPClient.get(`/api/Historia/${historiaId}`)
             return response.data;
         } catch (error) {
             console.error("Erro ao obter história: ", error);
@@ -11,9 +11,9 @@ const HistoriaAPI = {
         }
     },
 
-    async listarHistoriasAsync(ativos) {
+    async listarHistoriasAsync() {
         try {
-            const response = await HTTPClient.get(`/api/Historias/Listar?ativos=${ativos}`)
+            const response = await HTTPClient.get(`/api/Historia`)
             return response.data;
         } catch (error) {
             console.error("Erro ao listar histórias: ", error);
@@ -28,7 +28,7 @@ const HistoriaAPI = {
                 projetoId: projetoId,
                 descricao: descricao,
             };
-            const response = await HTTPClient.post(`/api/Historias/Criar`, historiaCriar)
+            const response = await HTTPClient.post(`/api/Historia`, historiaCriar)
             return response.data;
         } catch (error) {
             console.error("Erro ao criar história: ", error);
@@ -39,12 +39,11 @@ const HistoriaAPI = {
     async editarHistoriaAsync(id, nome, projetoId, descricao){
         try {
             const historiaEditar = {
-                id: id,
                 nome: nome,
                 projetoId: projetoId,
                 descricao: descricao,
             };
-            const response = await HTTPClient.put(`/api/Historias/Editar`, historiaEditar)
+            const response = await HTTPClient.put(`/api/Historia/${id}`, historiaEditar)
             return response.data
         } catch (error) {
             console.error("Erro ao editar história: ", error);
@@ -54,7 +53,7 @@ const HistoriaAPI = {
 
     async deletarHistoriaAsync(historiaId){
         try {
-            const response = await HTTPClient.delete(`/api/Historias/Deletar/${historiaId}`)
+            const response = await HTTPClient.delete(`/api/Historia/${historiaId}`)
             return response.data
         } catch (error) {
             console.error("Erro ao deletar história: ", error);
