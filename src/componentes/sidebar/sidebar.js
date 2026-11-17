@@ -4,6 +4,7 @@ import { SideBarItem } from "../sidebarItem/sidebarItem";
 import { MdOutlineSort } from "react-icons/md";
 import { MdGroup } from "react-icons/md"
 import { MdFolder } from "react-icons/md";
+import { MdChecklist } from "react-icons/md";
 
 export function Sidebar({children}){
     return(
@@ -25,6 +26,10 @@ export function Sidebar({children}){
 
                 <div className={style.sidebar_corpo}>
                     <SideBarItem texto="Histórias" link="/historias" logo={<MdOutlineSort/>}/>
+                </div>
+
+                <div className={style.sidebar_corpo}>
+                    <SideBarItem texto="Tarefas" link="/tarefas" logo={<MdChecklist/>}/>
                 </div>
             </div>
 
