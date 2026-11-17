@@ -43,3 +43,8 @@
         background-color: #f08830;
     }
 }
+
+.tabela th:last-child,
+.tabela td:last-child:not([colspan]) {
+    text-align: right;
+}

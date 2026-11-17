@@ -4,6 +4,7 @@ import { Home } from './paginas/Home/home';
 import { Usuarios } from './paginas/usuarios/usuarios';
 import { NovoUsuario } from './paginas/novoUsuario/novoUsuario';
 import { EditarUsuario } from './paginas/editarUsuario/editarUsuario';
+import { Projetos } from './paginas/projetos/projetos';
 import { Historias } from './paginas/Historias/Historias'
 import { NovaHistoria } from './paginas/NovaHistoria/NovaHistoria';
 import { EditarHistoria } from './paginas/EditarHistoria/EditarHistoria';
@@ -16,6 +17,7 @@ function App() {
         <Route path='/usuarios' element={<Usuarios />} />
         <Route path='/usuario/novo' element={<NovoUsuario />} />
         <Route path='/usuario/editar' element={<EditarUsuario />} />
+        <Route path='/projetos' element={<Projetos />} />
         <Route path='/historias' element={<Historias />} />
         <Route path='/historia/nova' element={<NovaHistoria />} />
         <Route path='/historia/editar' element={<EditarHistoria />} />
