@@ -1,0 +1,81 @@
+.sidebar_conteudo{
+    background-color: #070b3b;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    width: 20%;
+    height: 100%;
+
+    overflow-x: hidden;
+}
+
+.pagina_conteudo{
+    margin-left: 20%;
+}
+
+.sidebar_header{
+    justify-content: center;
+    text-align: left;
+
+    & .logo{
+        width: 55%;
+        margin: 10%;
+    }
+
+    & .sidebar_usuario{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        padding: 8px 7px;
+        margin: 0 10%;
+    }
+
+    & .sidebar_usuario_nome{
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    & .sidebar_usuario_seta{
+        display: flex;
+
+        color: #ffffff;
+        font-size: 26px;
+    }
+
+    & .linha{
+        color: rgba(250, 234, 214, 0.4);
+    }
+}
+
+
+.sidebar_rodape{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+
+    width: 100%;
+}
+
+.rodape_ajuda,
+.rodape_sair{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px;
+
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.rodape_ajuda{
+    color: #939393;
+}
+
+.rodape_sair{
+    color: #e4504b;
+}

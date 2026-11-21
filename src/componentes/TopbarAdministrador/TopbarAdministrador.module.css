@@ -1,0 +1,57 @@
+.topbar_conteudo{
+    background-color: #f1f1f1;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+
+    width: 80%;
+    height: 10vh;
+
+    display: flex;
+    justify-content: space-between;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.445);
+}
+
+.pagina_conteudo{
+    margin-top: 10vh;
+}
+
+.botao_deslogar{
+    text-decoration: none;
+    color: #070b3b;
+    font-size: 3.5vh;
+
+    display: flex;
+    align-items: center;
+
+    margin-right: 20px;
+}
+
+.topbar_trilha{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-left: 24px;
+
+    font-size: 16px;
+}
+
+.trilha_icone{
+    color: #8a8a8a;
+    font-size: 22px;
+}
+
+.trilha_secao{
+    color: #8a8a8a;
+}
+
+.trilha_separador{
+    color: #b5b5b5;
+}
+
+.trilha_pagina{
+    color: #070b3b;
+}
