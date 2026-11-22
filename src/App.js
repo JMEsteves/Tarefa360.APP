@@ -11,6 +11,9 @@ import { EditarHistoria } from './paginas/EditarHistoria/EditarHistoria';
 import { Tarefas } from './paginas/tarefas/tarefas';
 import { NovaTarefa } from './paginas/novaTarefa/novaTarefa';
 import { EditarTarefa } from './paginas/editarTarefa/editarTarefa';
+import { Sprint } from './paginas/sprint/sprint';
+import { NovaSprint } from "./paginas/novaSprint/novaSprint";
+import { EditarSprint } from './paginas/editarSprint/editarSprint';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         <Route path='/tarefas' element={<Tarefas />} />
         <Route path='/tarefa/nova' element={<NovaTarefa />} />
         <Route path='/tarefa/editar' element={<EditarTarefa />} />
+        <Route path='/sprints' element={<Sprint />} />
+        <Route path='/sprint/nova' element={<NovaSprint />} />
+        <Route path='/sprint/editar' element={<EditarSprint />} />
       </Routes>
     </BrowserRouter>
   );
