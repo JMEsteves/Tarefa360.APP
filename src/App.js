@@ -12,6 +12,7 @@ import { Tarefas } from './paginas/tarefas/tarefas';
 import { NovaTarefa } from './paginas/novaTarefa/novaTarefa';
 import { EditarTarefa } from './paginas/editarTarefa/editarTarefa';
 import { Login } from './paginas/Login/Login';
+import { HomeAdministrador } from './paginas/HomeAdministrador/HomeAdministrador';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/admin' element={<HomeAdministrador />} />
         <Route path='/usuarios' element={<Usuarios />} />
         <Route path='/usuario/novo' element={<NovoUsuario />} />
         <Route path='/usuario/editar' element={<EditarUsuario />} />
