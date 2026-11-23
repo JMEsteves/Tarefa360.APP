@@ -42,6 +42,23 @@ const UsuarioAPI = {
         throw error;
     }
 },
+
+    async loginAsync(email, senha) {
+        try {
+            const dadosLogin ={
+                email: email,
+                senha: senha
+            };
+
+            const response = await HTTPClient.post(`/api/Usuario/login`, dadosLogin);
+            return response.data;
+
+        } catch (error) {
+            console.error("Erro ao fazer login: ", error);
+            throw error;
+        }
+        
+    },
     
     async atualizarAsync(id, nome, email, tipoUsuario){
     try{

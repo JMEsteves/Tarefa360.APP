@@ -11,13 +11,16 @@ import { EditarHistoria } from './paginas/EditarHistoria/EditarHistoria';
 import { Tarefas } from './paginas/tarefas/tarefas';
 import { NovaTarefa } from './paginas/novaTarefa/novaTarefa';
 import { EditarTarefa } from './paginas/editarTarefa/editarTarefa';
+import { Login } from './paginas/Login/Login';
 import { HomeAdministrador } from './paginas/HomeAdministrador/HomeAdministrador';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Login />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<HomeAdministrador />} />
         <Route path='/usuarios' element={<Usuarios />} />
         <Route path='/usuario/novo' element={<NovoUsuario />} />
