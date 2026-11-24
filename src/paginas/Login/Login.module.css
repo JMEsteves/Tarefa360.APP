@@ -1,0 +1,67 @@
+.pagina_login {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    background-image: url("../../assets/Group\ 2.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.caixa_login {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-size: 40px;
+    color: #f58252;
+    width: 600px;
+}
+
+
+
+.campo {
+    width: 100%;
+    padding: 8px 0;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #9999;
+    outline: none;
+    font-size: 16px;
+}
+
+.botao_entrar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #f58252;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.link_senha {
+    color: #f58252;
+    text-decoration: none;
+}
+
+.erro {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    background-color: #c59046;
+    border: 1px solid #93632a;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+}
