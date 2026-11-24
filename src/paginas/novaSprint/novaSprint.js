@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../componentes/sidebar/sidebar";
 import { Topbar } from "../../componentes/sidebar/topbar/topbar";
@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import SprintAPI from "../../services/sprintAPI";
 import style from "./novaSprint.module.css";
+import ProjetoAPI from "../../services/projetoAPI";
 
 // Permite letras (com acento), números e espaços.
 const nomeSemEspeciais = /^[A-Za-zÀ-ÿ0-9 ]+$/;
@@ -14,18 +15,31 @@ export function NovaSprint() {
     const navigate = useNavigate();
 
     const [nome, setNome] = useState("");
-    const [projeto, setProjeto] = useState("");
+    const [listaProjetos, setListaProjetos] = useState([]);
+    const [projetoSelecionado, setProjetoSelecionado] = useState("");
     const [dataInicio, setDataInicio] = useState("");
     const [dataFinal, setDataFinal] = useState("");
     const [situacao, setSituacao] = useState("");
 
     
+    useEffect(() => {
+        async function carregarProjetos() {
+            try {
+                const dados = await ProjetoAPI.listarAsync(); // ajuste o nome do método
+                setListaProjetos(dados);
+            } catch (error) {
+                console.error("Erro ao carregar projetos:", error);
+            }
+        }
+        carregarProjetos();
+    }, []);
+
     const isFormValid = () => {
         const nomeValido =
             nome.trim().length >= 3 &&
             nome.trim().length <= 100 &&
             nomeSemEspeciais.test(nome.trim());
-        const projetoValido = projeto.trim().length > 0;
+        const projetoValido = projetoSelecionado !== "";
         const datasValidas = dataInicio !== "" && dataFinal !== "" && dataFinal > dataInicio;
         const situacaoValida = situacao !== "";
 
@@ -54,7 +68,7 @@ export function NovaSprint() {
         }
 
         try {
-            await SprintAPI.criarAsync(nome.trim(), projeto.trim(), dataInicio, dataFinal, situacao);
+            await SprintAPI.criarAsync(nome.trim(), projetoSelecionado, dataInicio, dataFinal, situacao);
             alert("Sprint criada com sucesso!");
             navigate("/sprints");
         } catch (error) {
@@ -62,6 +76,14 @@ export function NovaSprint() {
             alert(error.response?.data || "Erro ao criar a sprint.");
         }
     };
+
+    console.log({
+    nomeValido: nome.trim().length >= 3 && nome.trim().length <= 100 && nomeSemEspeciais.test(nome.trim()),
+    projetoValido: projetoSelecionado !== "",
+    datasValidas: dataInicio !== "" && dataFinal !== "" && dataFinal > dataInicio,
+    situacaoValida: situacao !== "",
+    listaProjetos,
+    });
 
     return (
         <Sidebar>
@@ -83,15 +105,24 @@ export function NovaSprint() {
                         </Form.Group>
 
                         <Form.Group controlId="formProjeto" className="mb-3">
-                            <Form.Label>Projeto</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Digite o projeto"
+        <Form.Label>Projeto</Form.Label>
+                            <Form.Select
                                 name="projeto"
-                                value={projeto}
-                                onChange={(e) => setProjeto(e.target.value)}
+                                value={projetoSelecionado}
+                                onChange={(e) => setProjetoSelecionado(e.target.value)}
                                 required
-                            />
+                            >
+                                <option value="">
+                                    Selecione....
+                                </option>
+
+                                {listaProjetos.map((projeto) => (
+                                    <option key={projeto.id}
+                                    value={projeto.id}>
+                                        {projeto.nome}
+                                    </option>
+                                ))}
+                                </Form.Select>
                         </Form.Group>
 
                         <Form.Group controlId="formInicio" className="mb-3">
